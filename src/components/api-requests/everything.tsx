@@ -1,9 +1,9 @@
 'use client';
 
-import { Copy, Check, ArrowRight, FileJson, ChevronRight, Search, Timer, LayoutDashboard } from 'lucide-react';
+import { Copy, Check, ArrowRight, FileJson, ChevronRight, Search, Timer, LayoutDashboard, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Bundle, FhirResource } from 'fhir/r4';
 import { handleCopyJson } from '@/components/api-requests';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -107,6 +107,11 @@ export default function Everything() {
       setIsLoading(false);
     }
   };
+
+  // Auto-trigger the request on component mount
+  useEffect(() => {
+    handleEverythingRequest();
+  }, []);
 
   const handleCopy = async () => {
     handleCopyJson(everythingData);
@@ -236,14 +241,13 @@ export default function Everything() {
         url="https://api.flexpa.com/fhir/Patient/$PATIENT_ID/$everything"
       />
 
-      {!everythingData && (
-        <Button 
-          onClick={handleEverythingRequest} 
-          disabled={isLoading}
-          className="min-w-[120px]"
-        >
-          {isLoading ? 'Loading...' : 'Send Request'}
-        </Button>
+      {!everythingData && isLoading && (
+        <div className="flex items-center justify-center py-12">
+          <div className="flex flex-col items-center gap-4">
+            <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
+            <p className="text-sm text-muted-foreground">Fetching patient records...</p>
+          </div>
+        </div>
       )}
 
       {everythingData && (

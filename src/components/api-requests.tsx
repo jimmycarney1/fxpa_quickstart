@@ -13,11 +13,19 @@ export const handleCopyJson = (data: unknown) => {
 export function ApiRequests() {
   return (
     <Tabs defaultValue="everything" className="w-full">
-      <TabsList className="grid w-full grid-cols-4 mb-6">
-        <TabsTrigger value="everything">$everything</TabsTrigger>
-        <TabsTrigger value="patient">Patient</TabsTrigger>
-        <TabsTrigger value="eob">EOB</TabsTrigger>
-        <TabsTrigger value="coverage">Coverage</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-4 mb-6 bg-slate-100/80 p-1 rounded-xl">
+        <TabsTrigger value="everything" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+          $everything
+        </TabsTrigger>
+        <TabsTrigger value="patient" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+          Patient
+        </TabsTrigger>
+        <TabsTrigger value="eob" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+          EOB
+        </TabsTrigger>
+        <TabsTrigger value="coverage" className="rounded-lg data-[state=active]:bg-white data-[state=active]:shadow-sm">
+          Coverage
+        </TabsTrigger>
       </TabsList>
       <TabsContent value="everything" className="mt-0">
         <EverythingRequest />

@@ -1,7 +1,7 @@
 'use client'
 
 import FlexpaLink from '@flexpa/link'
-import { ExternalLink } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 
@@ -23,8 +23,13 @@ export function LaunchLink() {
   }
 
   return (
-    <Button onClick={() => open()}>
-      Launch Link <ExternalLink className="ml-2 h-4 w-4" />
+    <Button
+      onClick={() => open()}
+      size="lg"
+      className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-8 py-6 text-lg rounded-xl shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5"
+    >
+      Connect Health Insurance
+      <ArrowRight className="ml-2 h-5 w-5" />
     </Button>
   )
 }   
