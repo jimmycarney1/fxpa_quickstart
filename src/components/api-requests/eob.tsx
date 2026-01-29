@@ -9,6 +9,7 @@ import { handleCopyJson } from '@/components/api-requests';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CurlExample } from '@/components/curl-example';
+import { JsonTree } from '@/components/ui/json-tree';
 import {
   Table,
   TableBody,
@@ -179,9 +180,7 @@ export default function EobRequest() {
 
             <TabsContent value="raw" className="mt-4">
               <ScrollArea className="h-[400px] rounded-md border p-4">
-                <pre className="text-sm font-mono whitespace-pre-wrap">
-                  {JSON.stringify(eobData, null, 2)}
-                </pre>
+                <JsonTree data={eobData} defaultExpanded={true} />
               </ScrollArea>
             </TabsContent>
           </Tabs>

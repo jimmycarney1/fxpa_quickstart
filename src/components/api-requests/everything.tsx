@@ -10,6 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { CurlExample } from '@/components/curl-example';
+import { JsonTree } from '@/components/ui/json-tree';
 import {
   Table,
   TableBody,
@@ -212,9 +213,7 @@ export default function Everything() {
               </div>
             </div>
             <ScrollArea className="h-[500px] rounded-md border p-4">
-              <pre className="text-sm font-mono whitespace-pre-wrap">
-                {JSON.stringify(selectedResource.examples[selectedExample], null, 2)}
-              </pre>
+              <JsonTree data={selectedResource.examples[selectedExample]} defaultExpanded={true} />
             </ScrollArea>
           </div>
         )}
@@ -301,9 +300,7 @@ export default function Everything() {
 
             <TabsContent value="bundle" className="mt-4">
               <ScrollArea className="h-[400px] rounded-md border p-4">
-                <pre className="text-sm font-mono">
-                  {JSON.stringify(createBundlePreview(everythingData), null, 2)}
-                </pre>
+                <JsonTree data={createBundlePreview(everythingData)} defaultExpanded={true} />
               </ScrollArea>
               <p className="text-xs text-muted-foreground mt-2">
                 Simplified Bundle structure. Use the Resources tab to explore contents.
